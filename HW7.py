@@ -91,8 +91,8 @@ def nationality_search(countries, cur, conn):
     for item in countries:
 
         cur.execute("SELECT name, position, nationality FROM Players WHERE nationality = ?", (item,))
+        
         lst1 = cur.fetchall()
-    
     
     conn.commit()
     
@@ -115,12 +115,9 @@ def nationality_search(countries, cur, conn):
 
 def birthyear_nationality_search(age, country, cur, conn):
         
-    
-
     cur.execute("SELECT name, nationality, birthyear FROM Players WHERE nationality = ? AND birthyear < ?", (country, 2023-age))
 
     lst1 = cur.fetchall()
-    
     
     conn.commit()
     
@@ -147,9 +144,7 @@ def position_birth_search(position, age, cur, conn):
        
     cur.execute("SELECT name, Positions.position, birthyear FROM Players JOIN Positions ON Players.position = Positions.id WHERE Positions.position = ? AND birthyear > ?", (position, 2023-age))
     
-    
     lst1 = cur.fetchall()
-    
     
     conn.commit()
     
